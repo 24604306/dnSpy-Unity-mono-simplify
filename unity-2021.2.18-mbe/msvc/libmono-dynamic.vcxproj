@@ -220,6 +220,9 @@
     <ProjectReference Include="libgcbdwgc.vcxproj">
       <Project>{ff3bbec1-0ca4-47c1-8288-73cc59317342}</Project>
     </ProjectReference>
+    <ProjectReference Include="libgcbdwgc.vcxproj">
+      <Project>{8f0d264f-a1b1-4959-b7d5-7428327de9ee}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MonoSourceLocation)\mono\mini\mini-windows-dllmain.c" />
