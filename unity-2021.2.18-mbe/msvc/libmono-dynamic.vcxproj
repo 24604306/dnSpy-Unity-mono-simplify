@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -19,33 +19,34 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{675F4175-FFB1-480D-AD36-F397578844D4}</ProjectGuid>
+    <ProjectGuid>{58081D69-BBD7-40BA-956C-E3302DA62D6E}</ProjectGuid>
     <RootNamespace>libmono-dynamic</RootNamespace>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -112,7 +113,7 @@
       <ImportLibrary>$(MONO_BUILD_DIR_PREFIX)$(Platform)\lib\$(Configuration)\$(TargetName).lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>.\libmono.bat "$(MONO_INCLUDE_DIR)" "$(SolutionDir)include\mono" -q</Command>
+      <Command>.\libmono.bat "$(MONO_INCLUDE_DIR)" "$(MSBuildProjectDirectory)\include\mono" -q</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -138,7 +139,7 @@
       <ImportLibrary>$(MONO_BUILD_DIR_PREFIX)$(Platform)\lib\$(Configuration)\$(TargetName).lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>.\libmono.bat "$(MONO_INCLUDE_DIR)" "$(SolutionDir)include\mono" -q</Command>
+      <Command>.\libmono.bat "$(MONO_INCLUDE_DIR)" "$(MSBuildProjectDirectory)\include\mono" -q</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -149,6 +150,7 @@
       <StringPooling>true</StringPooling>
       <WarningLevel>Level3</WarningLevel>
       <WholeProgramOptimization>true</WholeProgramOptimization>
+      <DebugInformationFormat>None</DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -158,9 +160,10 @@
       <AdditionalDependencies Condition="'$(MONO_TARGET_GC)'=='boehm'">$(GC_LIB);%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>$(MONO_BUILD_DIR_PREFIX)$(Platform)\lib\$(Configuration)\$(TargetName).lib</ImportLibrary>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>.\libmono.bat "$(MONO_INCLUDE_DIR)" "$(SolutionDir)include\mono" -q</Command>
+      <Command>.\libmono.bat "$(MONO_INCLUDE_DIR)" "$(MSBuildProjectDirectory)\include\mono" -q</Command>
     </PostBuildEvent>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
@@ -177,6 +180,7 @@
       <StringPooling>true</StringPooling>
       <WarningLevel>Level3</WarningLevel>
       <WholeProgramOptimization>true</WholeProgramOptimization>
+      <DebugInformationFormat>None</DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -186,9 +190,10 @@
       <AdditionalDependencies Condition="'$(MONO_TARGET_GC)'=='boehm'">$(GC_LIB);%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>$(MONO_BUILD_DIR_PREFIX)$(Platform)\lib\$(Configuration)\$(TargetName).lib</ImportLibrary>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>.\libmono.bat "$(MONO_INCLUDE_DIR)" "$(SolutionDir)include\mono" -q</Command>
+      <Command>.\libmono.bat "$(MONO_INCLUDE_DIR)" "$(MSBuildProjectDirectory)\include\mono" -q</Command>
     </PostBuildEvent>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
@@ -207,10 +212,10 @@
       <Project>{c3d4c623-55f8-4653-980d-61aa629b4e1d}</Project>
     </ProjectReference>
     <ProjectReference Include="genmdesc.vcxproj">
-      <Project>{b7098dfa-31e6-4006-8a15-1c9a4e925149}</Project>
+      <Project>{1bba8424-7339-4729-8e5b-2277fffc7349}</Project>
     </ProjectReference>
-    <ProjectReference Include="libgc.vcxproj" Condition="'$(MONO_TARGET_GC)'=='boehm'">
-      <Project>{eb56000b-c80b-4e8b-908d-d84d31b517d3}</Project>
+    <ProjectReference Include="libgcbdwgc.vcxproj">
+      <Project>{9fa45b8c-4a5f-4787-872f-75e150eb3aec}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
