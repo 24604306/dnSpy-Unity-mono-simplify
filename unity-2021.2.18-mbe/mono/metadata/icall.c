@@ -8577,9 +8577,13 @@ extern gboolean dnSpy_hideDebugger;
 
 extern gboolean dnSpy_hideDebugger;
 
+extern gboolean dnSpy_hideDebugger;
+
 MonoBoolean
 ves_icall_System_Diagnostics_Debugger_IsAttached_internal (void)
 {
+	if (dnSpy_hideDebugger)
+		return 0;
 	if (dnSpy_hideDebugger)
 		return 0;
 	if (dnSpy_hideDebugger)
